@@ -1,19 +1,22 @@
 pipeline {
-  agent any
-  stages {
-    stage ('Build') {
-      steps {
-        echo 'Stage Name = Build'
-        echo 'Building.....'
-        script {
-                    def age = 25
-                    if(age < 18) {
-                        echo "MINOR!!!!!!!!!!"    
+    agent any
+    parameters {
+        string(name: 'NAME', description: 'Please tell me your name')
+        choice(name: 'GENDER', choices: ['Male', 'Female'], description: 'Choose Gender')
+    }
+    stages {
+        stage('Printing name') {
+            steps {
+                script {
+                    def name = "${params.NAME}"
+                    def gender = "${params.GENDER}"
+                    if(gender == "Male") {
+                        echo "Mr. $name"    
                     } else {
-                        echo "ADULT!!!!!!!"
+                        echo "Mrs. $name"
                     }
                 }
-      }
-    }
-  }
+            }
+        }
+   }
 }
