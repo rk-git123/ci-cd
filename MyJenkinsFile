@@ -7,6 +7,7 @@ pipeline {
          stage('build step') {
               steps {
                  echo "Build stage is running"
+                 echo "Hello ${params.PERSON}"
               }
          }
      }
