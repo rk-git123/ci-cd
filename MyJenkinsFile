@@ -16,7 +16,8 @@ pipeline {
           }
           gScript = load "scripts.groovy";
           def sum = gScript.addNum(10,20);
-          println(sum)
+          println(sum);
+          println("Stage is " + params.CHOICE);
         }
       }
     }
