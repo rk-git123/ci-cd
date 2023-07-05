@@ -1,14 +1,19 @@
 pipeline {
-     agent any
-     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-     }
-     stages {
-         stage('build step') {
-              steps {
-                 echo "Build stage is running"
-                 echo "Hello ${params.PERSON}"
-              }
-         }
-     }
+  agent any
+  parameters {
+    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+  }
+  stages {
+    stage('build step') {
+      steps {
+        echo "Build stage is running"
+        echo "Hello ${params.PERSON}"
+        script {
+          if (10 < 20) {
+            println("Hello");
+          }
+        }
+      }
+    }
+  }
 }
