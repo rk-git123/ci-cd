@@ -1,3 +1,4 @@
+def gScript
 pipeline {
   agent any
   parameters {
@@ -12,9 +13,9 @@ pipeline {
           if (10 < 20) {
             println("Hello");
           }
-          def sc = load "scripts.groovy";
-          def x = sc.addNum(10,20);
-          println(x)
+          gScript = load "scripts.groovy";
+          def sum = sc.addNum(10,20);
+          println(sum)
         }
       }
     }
