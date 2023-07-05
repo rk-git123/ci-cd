@@ -14,7 +14,7 @@ pipeline {
             println("Hello");
           }
           gScript = load "scripts.groovy";
-          def sum = sc.addNum(10,20);
+          def sum = gScript.addNum(10,20);
           println(sum)
         }
       }
