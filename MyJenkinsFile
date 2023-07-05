@@ -1,25 +1,23 @@
-def gScript
 pipeline {
-  agent any
-  parameters {
-    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-    choice(name: 'CHOICE', choices: ['DEV', 'UAT', 'PROD'], description: 'Pick something')
-  }
-  stages {
-    stage('build step') {
-      steps {
-        echo "Build stage is running"
-        echo "Hello ${params.PERSON}"
-        script {
-          if (10 < 20) {
-            println("Hello");
-          }
-          gScript = load "scripts.groovy";
-          def sum = gScript.addNum(10,20);
-          println(sum);
-          println("Stage is " + params.CHOICE);
+    agent any
+    stages {
+        stage('Example Build') {
+            when {
+                anyOf { 
+			branch 'main'; branch 'staging' 
+		}
+            }
+            steps {
+                echo 'Hello World'
+            }
         }
-      }
+        stage('Example Deploy') {
+            when {
+                branch 'production'
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }
     }
-  }
 }
