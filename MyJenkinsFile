@@ -12,6 +12,9 @@ pipeline {
           if (10 < 20) {
             println("Hello");
           }
+          sc = load "scripts.groovy"
+          def x = sc.addNum(10,20);
+          println(x)
         }
       }
     }
