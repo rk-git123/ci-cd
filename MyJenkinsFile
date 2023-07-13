@@ -4,6 +4,7 @@ pipeline {
         stage('Example Build') {
             steps {
                 echo "$BUILD_URL"
+                echo "$BRANCH_NAME"
                 script{
                     def p = load "scripts.groovy"
                     def x = p.addNum(10,20)
