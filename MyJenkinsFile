@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Example Build') {
             steps {
-                echo "$JOB_NAME"
+                echo "$BUILD_URL"
                 script{
                     def p = load "scripts.groovy"
                     def x = p.addNum(10,20)
